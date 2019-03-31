@@ -20,11 +20,14 @@ namespace aspnetcoreapp.Pages.Movies
 
         public IActionResult OnGet()
         {
+            string[] genres = new string[]{"A","B","C"};
+            Genres = new SelectList(genres);
             return Page();
         }
 
         [BindProperty]
         public Movie Movie { get; set; }
+        public SelectList Genres { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
