@@ -10,6 +10,9 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<div>
+    <button type="button" onclick="TestAjax()">Ajax Test</button>
+</div>
 
 <form>
     <p>
@@ -75,3 +78,21 @@
 }
     </tbody>
 </table>
+
+<script>
+    function TestAjax()
+    {
+        $.ajax({
+            url: "/Movies/Test",   
+            type:"GET",   
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            data: { Message: "Test"},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("XSRF-TOKEN",
+                    $('input:hidden[name="__RequestVerificationToken"]').val());},
+        }).done(function(data){
+            alert(data);
+        })
+    }
+</script>

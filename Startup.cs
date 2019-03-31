@@ -38,6 +38,9 @@ namespace aspnetcoreapp
             //自訂DbContext
             services.AddDbContext<RazorPagesMovieContext>(option => option.UseSqlite(Configuration.GetConnectionString("MovieContext")));
 
+            //Anti XSS 
+            services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
