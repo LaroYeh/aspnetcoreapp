@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 //自訂namespace
 using RazorPagesMovie.Models;
+using LostRuin.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace aspnetcoreapp
@@ -37,6 +38,7 @@ namespace aspnetcoreapp
 
             //自訂DbContext
             services.AddDbContext<RazorPagesMovieContext>(option => option.UseSqlite(Configuration.GetConnectionString("MovieContext")));
+            services.AddDbContext<LostRuinContext>(option => option.UseSqlite(Configuration.GetConnectionString("LostRuinContext")));
 
             //Anti XSS 
             services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
