@@ -49,9 +49,9 @@ namespace LostRuin.Models
         public int ID { get; set; }
 
         [Required][DataType(DataType.Text)][MaxLength(50)]
-        public string Name_twn { get; set; } 
+        public string Name { get; set; } 
         [DataType(DataType.Text)][MaxLength(200)]
-        public string Desc_twn { get; set; }
+        public string Desc { get; set; }
         public string Effect { get; set; } //地圖影響
         [Required][DataType(DataType.DateTime)] //YYYY-mm-DD HH:MM:SS
         public DateTime StartDate { get; set; } //開放時間
@@ -75,8 +75,8 @@ namespace LostRuin.Models
     {
         public int ID { get; set; }
         [Required]
-        public string Name_twn { get; set; }
-        public string Desc_twn { get; set; }
+        public string Name { get; set; }
+        public string Desc { get; set; }
         public string Img { get; set; }
         public string Effect { get; set; } // [Stauts1]:[Value1], [Stauts2]:[Value2] ex: Breath:-1
     }
@@ -84,30 +84,24 @@ namespace LostRuin.Models
     {
         public int ID { get; set; }
         [Required]
-        public string Name_twn { get; set; }        
-        public string Desc_twn { get; set; }  
-        public string Img { get; set; }
+        public string Name { get; set; }        
+        public string Desc { get; set; }  
+        public string Svg { get; set; }
         public string Effect { get; set; } // [Stauts1]:[Value1], [Stauts2]:[Value2] ex: Breath:-1
     }
     public class Trigger //觸發器
     {
         public int ID { get; set; }
-        public string Name_twn { get; set; }
-        public string Effect { get; set; } // [Stauts1]:[Value1], [Stauts2]:[Value2] ex: Breath:-1
+        public string Name { get; set; }
     }
     public class Event //事件
     {
-        // Event_LostRuin_Event	Id	int	Unchecked	Y		事件id			INTEGER
-        // Event_LostRuin_Event	DescId	int	Unchecked		Y	說明id(事件類型)	FK - DescIndex		INTEGER
-        // Event_LostRuin_Event	GM_Dice	int	Unchecked		Y	對應的暗骰	1~100		INTEGER
-        // Event_LostRuin_Event	Result	varchar(255)	Unchecked			事件的結果			TEXT
-        // Event_LostRuin_Event	Comment	varchar(255)	Checked			備註			TEXT
-        // Event_LostRuin_Event	LastModifyUser	varchar(20)	Unchecked			最後更新的使用者			TEXT
-        // Event_LostRuin_Event	LastModifyDate	Datetime	Unchecked			最後更新的日期			TEXT as ("YYYY-MM-DD HH:MM:SS.SSS").
         public int ID { get; set; }
         public int TriggerId { get; set; }
-        public string Name_twn { get; set; }
-        public string Desc_twn { get; set; }
+        public int Level { get; set; }
+        public string Name { get; set; }
+        public string Desc { get; set; }
+        public string Effect { get; set; }
 
     }
     #endregion
@@ -115,8 +109,8 @@ namespace LostRuin.Models
     public class Code
     {
         public int ID { get; set; }
-        public string Name_twn { get; set; }        
-        public string Desc_twn { get; set; } 
+        public string Name { get; set; }        
+        public string Desc { get; set; } 
         public string Comment { get; set; }
     }
 
